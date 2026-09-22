@@ -1,0 +1,8 @@
+{
+  "name": "falconvision.fpv",
+  "description": "Immersive FPV and cinematic aerial videography with DJI Avata 360 Drone for weddings, real estate, commercials, and events.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
