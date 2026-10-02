@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { RotateCw, Compass, ShieldCheck } from "lucide-react";
+import { usePrefersReducedMotion } from "../hooks";
 
 export default function IntroDroneModel() {
   const [rotateY, setRotateY] = useState(15);
@@ -9,9 +10,12 @@ export default function IntroDroneModel() {
   const [isSpinningFast, setIsSpinningFast] = useState(false);
   const cardRef = useRef(null);
   const autoAngleRef = useRef(15);
+  const reducedMotion = usePrefersReducedMotion();
 
-  // Smooth auto-rotation loop when enabled and not actively dragging/hovering
+  // Smooth auto-rotation loop when enabled and not actively dragging/hovering.
+  // Disabled entirely when the user prefers reduced motion.
   useEffect(() => {
+    if (reducedMotion) return;
     let animationFrame;
     if (isRotating && !isHovered) {
       const loop = () => {
@@ -23,7 +27,7 @@ export default function IntroDroneModel() {
       animationFrame = requestAnimationFrame(loop);
     }
     return () => cancelAnimationFrame(animationFrame);
-  }, [isRotating, isHovered]);
+  }, [isRotating, isHovered, reducedMotion]);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;

@@ -1,8 +1,8 @@
 # falconvision.fpv — React + Vite
 
-Converted from the uploaded falconvision.fpv website.
-
-The existing theme, fonts, colors, layout, and visual styling are preserved.
+Cinematic FPV drone videography website. Premium dark editorial design with
+light theme support, scroll reveals, an interactive 3D-style drone card, and
+a WhatsApp-first booking flow.
 
 ## Install
 
@@ -24,10 +24,10 @@ npm run build
 
 ## WhatsApp
 
-Open `src/App.jsx` and replace:
+Open `src/data.js` and replace:
 
 ```js
-const WHATSAPP_NUMBER = "919999999999";
+export const WHATSAPP_NUMBER = "919999999999";
 ```
 
 with your actual WhatsApp number using country code and no `+`, spaces, or hyphens.
