@@ -482,6 +482,8 @@ section + section {
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--t-normal) ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-menu.open {
@@ -2259,18 +2261,53 @@ section + section {
 
 @media (max-width: 640px) {
   :root {
-    --gutter: 5.5vw;
+    --gutter: 5vw;
+    --section-pad: clamp(44px, 7vw, 64px);
   }
 
   .hero {
-    padding-top: 108px;
-    padding-bottom: 56px;
-    justify-content: center;
+    min-height: 100dvh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: calc(72px + 12px);
+    padding-bottom: clamp(24px, 4.5vh, 36px);
   }
 
   .hero-img-overlay {
-    object-position: 62% 30%;
-    opacity: 0.62;
+    object-position: 50% 16%;
+    opacity: 0.76;
+    transform: scale(1.02);
+  }
+
+  .hero-ambient-glow {
+    top: 8%;
+    right: 2%;
+    width: 280px;
+    height: 280px;
+  }
+
+  .hero-horizon-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(8, 9, 9, 0.72) 0%,
+      rgba(8, 9, 9, 0.12) 20%,
+      rgba(8, 9, 9, 0.32) 42%,
+      rgba(8, 9, 9, 0.85) 68%,
+      var(--hero-scrim) 96%
+    );
+  }
+
+  [data-theme="light"] .hero-horizon-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(245, 244, 239, 0.85) 0%,
+      rgba(245, 244, 239, 0.2) 20%,
+      rgba(245, 244, 239, 0.45) 42%,
+      rgba(245, 244, 239, 0.9) 70%,
+      var(--bg) 98%
+    );
   }
 
   .hero-meta,
@@ -2278,30 +2315,89 @@ section + section {
     display: none;
   }
 
+  .eyebrow {
+    font-size: clamp(9.5px, 2.7vw, 11px);
+    letter-spacing: 0.11em;
+    gap: 7px;
+    margin-bottom: 2px;
+  }
+
+  .eyebrow-text {
+    line-height: 1.35;
+  }
+
   .hero h1 {
-    font-size: clamp(2.3rem, 11.5vw, 3.4rem);
+    font-size: clamp(1.85rem, 8.4vw, 2.6rem);
+    line-height: 1.06;
+    margin: 8px 0 12px;
+    letter-spacing: -0.035em;
   }
 
   .hero-text {
-    font-size: 14.5px;
+    font-size: clamp(13px, 3.4vw, 14.5px);
+    line-height: 1.55;
+    max-width: 520px;
+    opacity: 0.92;
   }
 
   .hero-actions {
+    margin-top: 16px;
+    gap: 10px;
     flex-direction: column;
+    width: 100%;
   }
+
   .hero-actions .button {
     width: 100%;
+    min-height: 44px;
+    padding: 12px 20px;
+    font-size: 13px;
+    letter-spacing: 0.02em;
   }
 
   .section-head {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.75rem, 7.5vw, 2.2rem);
+  }
+
+  .intro-main h2 {
+    font-size: clamp(1.75rem, 7.5vw, 2.2rem);
   }
 
   .intro-stats-grid {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+  }
+
+  .intro-stat-card {
+    padding: 14px 14px;
+  }
+
+  .intro-drone-card {
+    padding: 14px 12px;
+  }
+
+  .intro-drone-svg {
+    max-width: 270px;
+  }
+
+  .intro-ctrl-btn {
+    font-size: 9px;
+    padding: 8px 6px;
+    letter-spacing: 0.06em;
+    gap: 5px;
+  }
+
+  .drone-highlight-box {
+    padding: 16px 18px;
+    margin-top: 20px;
+    gap: 14px;
   }
 
   .service-row {
@@ -2310,24 +2406,42 @@ section + section {
       "num"
       "media"
       "body";
-    gap: 14px;
-    padding: 22px 0;
+    gap: 12px;
+    padding: 20px 0;
   }
 
   .service-row-media {
-    height: 200px;
+    height: 190px;
+  }
+
+  .price-card {
+    padding: 22px 18px;
+  }
+
+  .price-amount {
+    font-size: 34px;
+  }
+
+  .price-features {
+    margin: 16px 0 22px;
+    gap: 10px;
   }
 
   .why-item {
     grid-template-columns: auto 1fr;
   }
+
   .why-num {
     display: none;
   }
 
+  .booking-form-wrap {
+    padding: 20px 16px;
+  }
+
   .field-row {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
   }
 
   .detect-location-btn span {
@@ -2340,12 +2454,13 @@ section + section {
 
   .footer-top {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 28px;
   }
 
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+    gap: 14px;
   }
 
   .theater-modal-header {
@@ -2356,6 +2471,16 @@ section + section {
   .theater-header-actions {
     width: 100%;
     justify-content: space-between;
+  }
+}
+
+@media (min-width: 440px) and (max-width: 640px) {
+  .hero-actions {
+    flex-direction: row;
+  }
+  .hero-actions .button {
+    width: auto;
+    flex: 1;
   }
 }
 
@@ -2397,3 +2522,4 @@ section + section {
     animation: none !important;
   }
 }
+

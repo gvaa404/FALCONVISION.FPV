@@ -23,12 +23,12 @@ export default function Hero() {
       <div className="hero-copy">
         <p className="eyebrow reveal-plain">
           <span className="eyebrow-dot" aria-hidden="true" />
-          DJI AVATA 360 · CINEMATIC FPV · AERIAL VIDEOGRAPHY
+          <span className="eyebrow-text">DJI AVATA 360 · CINEMATIC FPV · AERIAL VIDEOGRAPHY</span>
         </p>
 
         <h1 className="reveal-plain d1">
           Cinematic FPV.
-          <br />
+          <br className="hero-br" />
           <em>From a different perspective.</em>
         </h1>
 
@@ -63,3 +63,4 @@ export default function Hero() {
     </section>
   );
 }
+
