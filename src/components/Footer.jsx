@@ -27,6 +27,9 @@ const FLEET_SPECS = [
   { icon: Shield, text: "DGCA Compliant Operations" },
 ];
 
+// Pretty-print the number from data.js so the footer can never drift from the WhatsApp link
+const WHATSAPP_DISPLAY = `+${WHATSAPP_NUMBER.slice(0, 2)} ${WHATSAPP_NUMBER.slice(2, 7)} ${WHATSAPP_NUMBER.slice(7)}`;
+
 export default function Footer() {
   return (
     <footer className="main-footer">
@@ -93,7 +96,7 @@ export default function Footer() {
               className="footer-contact-link highlight"
             >
               <Phone size={14} />
-              <span>WhatsApp Direct (+91 99999 99999)</span>
+              <span>WhatsApp Direct ({WHATSAPP_DISPLAY})</span>
               <ArrowUpRight size={13} />
             </a>
 

@@ -168,7 +168,7 @@ export const portfolio = [
     id: "fpv-reel",
     category: "FPV DRONE REEL",
     title: "High-Speed Dynamic FPV Flight",
-    subtitle: "Acros, dive-ins and fast proximity tracking",
+    subtitle: "Arcs, dive-ins and fast proximity tracking",
     youtubeId: "bNpx7gpSqeI",
     wide: true,
   },
